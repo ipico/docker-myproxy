@@ -1,0 +1,24 @@
+version: "2"
+
+services:
+ myweb:
+   container_name: myweb
+   hostname: myweb
+   image: hpco/myweb:2.0
+   ports:
+     - "8880:8880"
+     - "4443:4443"
+   networks:
+     - nginx-proxy
+ myproxy:
+   container_name: myproxy
+   hostname: myproxy
+   image: hpco/myproxy:2.0
+   ports:
+     - "80:80"
+     - "443:443"  
+   networks:
+     - nginx-proxy 
+   
+networks:
+ nginx-proxy: 
